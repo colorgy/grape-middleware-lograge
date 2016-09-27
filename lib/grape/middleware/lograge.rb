@@ -67,6 +67,7 @@ class Grape::Middleware::Lograge < Grape::Middleware::Globals
     payload[:format]     = env['api.format']
     payload[:version]    = env['api.version']
     payload[:db_runtime] = @db_duration
+    payload[:user_id]    = env['api.user_id'] if env['api.user_id']
   end
 
   def after_exception(payload, e)
