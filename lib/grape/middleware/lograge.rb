@@ -113,7 +113,8 @@ class Grape::Middleware::Lograge < Grape::Middleware::Globals
       body:       string_body,
       user_agent: env['HTTP_USER_AGENT'],
       request_id: env['action_dispatch.request_id'],
-      remote_ip:  env['action_dispatch.remote_ip'].to_s
+      remote_ip:  env['action_dispatch.remote_ip'].to_s,
+      headers:    env['grape.request.headers']
     }
   end
 
