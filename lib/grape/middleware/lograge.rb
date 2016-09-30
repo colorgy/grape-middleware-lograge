@@ -78,6 +78,7 @@ class Grape::Middleware::Lograge < Grape::Middleware::Globals
 
     payload[:exception] = [class_name, e.message]
     payload[:backtrace] = e.backtrace
+    payload[:user_id]   = env['api.user_id'] if env['api.user_id']
 
     unless ActionDispatch::ExceptionWrapper.rescue_responses[class_name].present?
       ActionDispatch::ExceptionWrapper.rescue_responses[class_name] = STATUS_CODE_TO_SYMBOL[status]
